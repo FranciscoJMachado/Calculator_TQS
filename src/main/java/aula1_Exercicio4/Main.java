@@ -29,7 +29,7 @@ public class Main {
                     System.out.println("Segundo Numero Pretendido");
                     String paraConverter2 = sc.nextLine();
                     //BUG: Troca do + pelo -
-                    int resultado = Integer.parseInt(CPPN.converter_para_Numero(paraConverter)) - Integer.parseInt(CPPN.converter_para_Numero(paraConverter2));
+                    int resultado = Integer.parseInt(CPPN.converter_para_Numero(paraConverter)) + Integer.parseInt(CPPN.converter_para_Numero(paraConverter2));
                     System.out.println(CPPN.converter_para_Numero(paraConverter) +"+"+ CPPN.converter_para_Numero(paraConverter2) +"= "+resultado);
                     break;
                 default:
