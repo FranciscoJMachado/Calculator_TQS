@@ -15,16 +15,17 @@ public class ConversorPalavraParaNumero {
 	{
 		String convertida;
 		
-		String [] Separada = SeparaString(paraConverter);
+		String [] Separada = separaString(paraConverter);
 		
-		convertida = TrocarLetrasPorNumeros(Separada);
+		convertida = trocarLetrasPorNumeros(Separada);
 		
 		return convertida;
 	}
 
 	public String converter_para_Numero(String paraConverter)
 	{
-		String [] Separada = SeparaString(converter_para_String(paraConverter));
+		String [] Separada;
+            Separada = separaString(converter_para_String(paraConverter));
 		
 		int[] Somar = new int[Separada.length];
 		int numero_somas=0;
@@ -77,24 +78,27 @@ public class ConversorPalavraParaNumero {
 	
 	
 
-	private String TrocarLetrasPorNumeros(String [] Separada) {
+	private String trocarLetrasPorNumeros(String [] Separada) {
 		
 		String convertida = "";
-		
+		StringBuilder buf = new StringBuilder();
             for (String Separada1 : Separada) {
                 //System.out.println(myMap.get("hundred"));
                 if (myMap.containsKey(Separada1)) {
-                    convertida += myMap.get(Separada1);
+                    //convertida += myMap.get(Separada1);
+                    buf.append(myMap.get(Separada1));
                 } else {
-                    convertida += Separada1;
+                    buf.append(Separada1);
                 }
-                convertida += " ";
-            }
+                buf.append(" ");
+                
+             
+                        }
 		
-		return convertida;
+		return  buf.toString();
 	}
 
-	private String[] SeparaString(String paraConverter) {
+	private String[] separaString(String paraConverter) {
 		
 		paraConverter = paraConverter.replaceAll("-", " ");
 		String [] Separada = paraConverter.split(" ");
