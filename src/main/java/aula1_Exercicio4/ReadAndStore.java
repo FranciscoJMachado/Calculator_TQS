@@ -10,12 +10,12 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ReadAndStore {
-        private final static Scanner sc = new Scanner (System.in);
-	private String caminho;
+        public static Scanner sc = new Scanner (System.in);
+	private String Caminho;
 	private final List<String> ReadedFile;
 
 	public ReadAndStore(String Caminho) {
-		this.caminho = Caminho;
+		this.Caminho = Caminho;
 		ReadedFile = new ArrayList<>();
 		Ler();
 	}
@@ -28,12 +28,12 @@ public class ReadAndStore {
 
 		try {
 
-			fr = new FileReader(caminho);
+			fr = new FileReader(Caminho);
 			br = new BufferedReader(fr);
 
 			String sCurrentLine;
 
-			br = new BufferedReader(new FileReader(caminho));
+			br = new BufferedReader(new FileReader(Caminho));
 
 			while ((sCurrentLine = br.readLine()) != null) {
 				ReadedFile.add(sCurrentLine);
@@ -41,7 +41,7 @@ public class ReadAndStore {
 
 		} catch ( IOException e) {
                         System.out.println("File Not Found. Where is The file? ");
-                        caminho = sc.nextLine();
+                        Caminho = sc.nextLine();
                         Ler();
 			
 
