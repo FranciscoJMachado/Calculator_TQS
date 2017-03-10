@@ -7,15 +7,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class ReadAndStore {
-
-	private final String Caminho;
-	private List<String> ReadedFile;
+        public static Scanner sc = new Scanner (System.in);
+	private String Caminho;
+	private final List<String> ReadedFile;
 
 	public ReadAndStore(String Caminho) {
 		this.Caminho = Caminho;
-		ReadedFile = new ArrayList<String>();
+		ReadedFile = new ArrayList<>();
 		Ler();
 	}
 
@@ -38,9 +39,11 @@ public class ReadAndStore {
 				ReadedFile.add(sCurrentLine);
 			}
 
-		} catch (IOException e) {
-
-			e.printStackTrace();
+		} catch ( IOException e) {
+                        System.out.println("File Not Found. Where is The file? ");
+                        Caminho = sc.nextLine();
+                        Ler();
+			
 
 		} finally {
 
@@ -53,8 +56,10 @@ public class ReadAndStore {
 					fr.close();
 
 			} catch (IOException ex) {
-
-				ex.printStackTrace();
+                                
+                                System.err.println("Erro ao Fechar o Ficheiro de Leitura");
+                                System.exit(0);
+				//ex.printStackTrace();
 
 			}
 
@@ -63,7 +68,7 @@ public class ReadAndStore {
 	
 	public Map<String, Integer > ReadToMap()
 	{
-		Map <String, Integer > myMap  = new HashMap <String, Integer>();
+		Map <String, Integer > myMap  = new HashMap <>();
 		
 			for(int i =0; i<ReadedFile.size(); i++)
 			{

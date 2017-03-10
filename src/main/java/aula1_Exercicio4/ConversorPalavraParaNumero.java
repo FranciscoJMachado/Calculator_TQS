@@ -28,7 +28,7 @@ public class ConversorPalavraParaNumero {
 		
 		int[] Somar = new int[Separada.length];
 		int numero_somas=0;
-		int tmp1 = -1, tmp2, resultado = 0;
+		int tmp1 = -1, tmp2=0, resultado = 0;
 		
 		for(int i=0;i<Separada.length;i++)
 		{
@@ -37,8 +37,12 @@ public class ConversorPalavraParaNumero {
 				if(tmp1==-1){
 				tmp1 = Integer.parseInt(Separada[i]);}
 				
+                                try{
 				tmp2 = Integer.parseInt(Separada[i+1]);
-			
+                                }catch(ArrayIndexOutOfBoundsException ss)
+                                {
+                                    System.out.println("Ultimo calculo");
+                                }
 				
 				if (tmp1<tmp2)
 				{
@@ -50,7 +54,7 @@ public class ConversorPalavraParaNumero {
 					numero_somas++;
 					tmp1=-1;
 				}
-				}catch(Exception e)
+				}catch(NumberFormatException e)
 					{
 						if((i+1)>=Separada.length)
 						{
@@ -58,7 +62,6 @@ public class ConversorPalavraParaNumero {
 							numero_somas++;
 							tmp1=-1;
 						}
-						continue;
 					}
 			
 		}
@@ -78,21 +81,15 @@ public class ConversorPalavraParaNumero {
 		
 		String convertida = "";
 		
-		for(int i=0; i<Separada.length;i++)
-		{
-			//System.out.println(myMap.get("hundred"));
-			
-			if(myMap.containsKey(Separada[i])){
-				
-				convertida += myMap.get(Separada[i]);}
-			else
-			{
-				convertida += Separada[i];
-			}
-			
-			convertida += " ";
-			
-		}
+            for (String Separada1 : Separada) {
+                //System.out.println(myMap.get("hundred"));
+                if (myMap.containsKey(Separada1)) {
+                    convertida += myMap.get(Separada1);
+                } else {
+                    convertida += Separada1;
+                }
+                convertida += " ";
+            }
 		
 		return convertida;
 	}
